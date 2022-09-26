@@ -37,9 +37,23 @@ export default Sidebar;
 
 const Container = styled.div`
   width: 20%;
+  @media (max-width: 600px) {
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    align-items:center;
+    justify-content: space-evenly;
+  }
 `;
 
-const Navbar = styled.ul``;
+const Navbar = styled.ul`
+@media (max-width: 600px) {
+  display:flex;
+  flex-direction: row;
+  width: 100%;
+  align-items:center;
+  justify-content: space-evenly;
+}`;
 const NavItem = styled.li`
   display: flex;
   align-items: center;
@@ -62,4 +76,7 @@ const NavItemSelected = styled.li`
 const CeletalImg = styled.img`
   width: 100%;
   height: 10%;
+  @media (max-width: 600px) {
+    width: 20%;
+  }
 `;

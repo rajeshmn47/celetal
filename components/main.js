@@ -11,6 +11,8 @@ import Edit from "./edit";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { loadUser,logout } from "../actions/userAction";
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 function Main() {
   const dispatch = useDispatch()
@@ -39,6 +41,11 @@ function Main() {
   const handleclick = () => {
     setOpen(true);
   };
+  const handlePages=(i)=>{
+    if(page>0){
+      setPage(page+i)
+    }
+  }
   const handledelete = async (id) => {
     console.log(id, "sachin");
     const d = await axios.get(`https://interviewassignmentrajesh.herokuapp.com/user/deleteuser/${id}`);
@@ -113,6 +120,13 @@ function Main() {
         notifyopen={notifyopen}
         setNotifyopen={setNotifyopen}
       />
+     
+      <Pagination>
+        <LeftPage onClick={()=>handlePages(-1)}><ChevronLeftIcon style={{fontSize: '3rem'}}/></LeftPage>
+        {page}
+        <RightPage onClick={()=>handlePages(1)}><ChevronRightIcon style={{fontSize: '3rem',color:'#ec633c'}} /></RightPage>
+      </Pagination>
+    
     </Container>
   );
 }
@@ -125,6 +139,9 @@ const Container = styled.div`
   width: 80%;
   padding: 2vh 2vw;
   height: 100vh;
+  @media (max-width: 600px) {
+    width: 100vh;
+  }
 `;
 
 const Input = styled.input`
@@ -200,5 +217,27 @@ color: #ffffff;
 const Login= styled.a`
 text-transform: capitalize;
 border-radius: 5px;
+`
+
+const Pagination= styled.div`
+display:flex;
+align-items:center;
+justify-content: space-evenly;
+width: 15vw;
+flex:flex-end;
+float: right;
+`
+
+const LeftPage= styled.button`
+display:flex;
+align-items:center;
+justify-content: space-evenly;
+background-color:transparent;
+`
+const RightPage =styled.button`
+display:flex;
+align-items:center;
+justify-content: space-evenly;
+background-color:transparent;
 `
 export default Main;

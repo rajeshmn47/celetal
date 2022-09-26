@@ -74,7 +74,7 @@ export const loadUser = () => async (dispatch) => {
     );
     console.log(data.message[0]);
     if (data.message[0]) {
-      dispatch(setShowBlogSearch(data.message[0]))
+      dispatch(setShowBlogSearch(data.message[0]));
     }
   } catch (error) {
     console.log(error);
@@ -83,12 +83,10 @@ export const loadUser = () => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   localStorage.removeItem("server_token");
-  dispatch({ type: LOGOUT_SUCCESS })
+  dispatch({ type: LOGOUT_SUCCESS });
 };
 
 export const setShowBlogSearch = (payload) => ({
-  type:  LOAD_USER_SUCCESS,
+  type: LOAD_USER_SUCCESS,
   payload,
 });
-
-

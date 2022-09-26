@@ -89,10 +89,13 @@ export default function Edit({
       `https://interviewassignmentrajesh.herokuapp.com/user/edituser/${edititem._id}`
     );
     console.log(edititem._id, email);
-    const d = await axios.post("https://interviewassignmentrajesh.herokuapp.com/user/edituser", {
-      id: edititem._id,
-      email: email,
-    });
+    const d = await axios.post(
+      "https://interviewassignmentrajesh.herokuapp.com/user/edituser",
+      {
+        id: edititem._id,
+        email: email,
+      }
+    );
     const data = await axios.get(
       `https://interviewassignmentrajesh.herokuapp.com/user/getallusers/?page=${page}`
     );

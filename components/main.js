@@ -10,12 +10,13 @@ import Add from "./add";
 import Edit from "./edit";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { loadUser,logout } from "../actions/userAction";
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { loadUser, logout } from "../actions/userAction";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import MenuIcon from "@mui/icons-material/Menu";
 
 function Main() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [open, setOpen] = useState(false);
@@ -41,14 +42,16 @@ function Main() {
   const handleclick = () => {
     setOpen(true);
   };
-  const handlePages=(i)=>{
-    if(page>0){
-      setPage(page+i)
+  const handlePages = (i) => {
+    if (page > 0) {
+      setPage(page + i);
     }
-  }
+  };
   const handledelete = async (id) => {
     console.log(id, "sachin");
-    const d = await axios.get(`https://interviewassignmentrajesh.herokuapp.com/user/deleteuser/${id}`);
+    const d = await axios.get(
+      `https://interviewassignmentrajesh.herokuapp.com/user/deleteuser/${id}`
+    );
     const data = await axios.get(
       `https://interviewassignmentrajesh.herokuapp.com/user/getallusers/?page=${page}`
     );
@@ -56,17 +59,22 @@ function Main() {
     setUsers(data.data.users);
   };
 
-  const handleLogout= async ()=>{
-    dispatch(logout())
-  }
+  const handleLogout = async () => {
+    dispatch(logout());
+  };
   return (
     <Container>
       <AppBar
         position="static"
         elevation={0}
+        className="appbar"
         style={{ backgroundColor: "#F8F8F8", padding: "2vh 2vw" }}
       >
-        <Grid container spacing={2} style={{display:'flex',alignItems:'center'}}>
+        <Grid
+          container
+          spacing={2}
+          style={{ display: "flex", alignItems: "center" }}
+        >
           <Grid item xs={8} lg={9}>
             <Input type="text" placeholder="search" />
           </Grid>
@@ -74,12 +82,14 @@ function Main() {
             <NotificationsIcon style={{ color: "#757575" }} />
           </Grid>
           <Grid item xs={8} lg={1}>
-            <Name>{user&&user.username?.charAt(0)}</Name>
-
+            <Name>{user && user.username?.charAt(0)}</Name>
           </Grid>
           <Grid item xs={8} lg={1}>
-            {user&&user.username?<Logout onClick={()=>handleLogout()}>logout</Logout>
-            :<Login href='/signin'>Sign in</Login>}
+            {user && user.username ? (
+              <Logout onClick={() => handleLogout()}>logout</Logout>
+            ) : (
+              <Login href="/signin">Sign in</Login>
+            )}
           </Grid>
         </Grid>
       </AppBar>
@@ -120,13 +130,16 @@ function Main() {
         notifyopen={notifyopen}
         setNotifyopen={setNotifyopen}
       />
-     
+
       <Pagination>
-        <LeftPage onClick={()=>handlePages(-1)}><ChevronLeftIcon style={{fontSize: '3rem'}}/></LeftPage>
+        <LeftPage onClick={() => handlePages(-1)}>
+          <ChevronLeftIcon style={{ fontSize: "3rem" }} />
+        </LeftPage>
         {page}
-        <RightPage onClick={()=>handlePages(1)}><ChevronRightIcon style={{fontSize: '3rem',color:'#ec633c'}} /></RightPage>
+        <RightPage onClick={() => handlePages(1)}>
+          <ChevronRightIcon style={{ fontSize: "3rem", color: "#ec633c" }} />
+        </RightPage>
       </Pagination>
-    
     </Container>
   );
 }
@@ -134,13 +147,21 @@ function Main() {
 const Container = styled.div`
   .css-hip9hq-MuiPaper-root-MuiAppBar-root {
     background-color: #ffffff;
+    @media (max-width: 600px) {
+      display: none !important;
+      position: static;
+    }
+  }
+  .appbar {
+    @media (max-width: 600px) {
+      display: none !important;
+    }
   }
   background-color: #f8f8f8;
   width: 80%;
   padding: 2vh 2vw;
   height: 100vh;
   @media (max-width: 600px) {
-    width: 100vh;
   }
 `;
 
@@ -207,37 +228,37 @@ const AddButton = styled.button`
   justify-content: space-evenly;
 `;
 
-const Logout= styled.button`
-background-color: #ec633c;
-text-transform: capitalize;
-padding:1vh 1vw;
-border-radius: 5px;
-color: #ffffff;
-`
-const Login= styled.a`
-text-transform: capitalize;
-border-radius: 5px;
-`
+const Logout = styled.button`
+  background-color: #ec633c;
+  text-transform: capitalize;
+  padding: 1vh 1vw;
+  border-radius: 5px;
+  color: #ffffff;
+`;
+const Login = styled.a`
+  text-transform: capitalize;
+  border-radius: 5px;
+`;
 
-const Pagination= styled.div`
-display:flex;
-align-items:center;
-justify-content: space-evenly;
-width: 15vw;
-flex:flex-end;
-float: right;
-`
+const Pagination = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 15vw;
+  flex: flex-end;
+  float: right;
+`;
 
-const LeftPage= styled.button`
-display:flex;
-align-items:center;
-justify-content: space-evenly;
-background-color:transparent;
-`
-const RightPage =styled.button`
-display:flex;
-align-items:center;
-justify-content: space-evenly;
-background-color:transparent;
-`
+const LeftPage = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: transparent;
+`;
+const RightPage = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: transparent;
+`;
 export default Main;

@@ -58,7 +58,9 @@ export const Login = () => {
             </div>
             <input type="submit" className="submitbutton" value="Log in" />
           </form>
-          <Helper>dont have account <Link href='/signup'>register</Link> here</Helper>
+          <Helper>
+            dont have account <Link href="/signup">register</Link> here
+          </Helper>
         </div>
       </div>
     </>
@@ -66,10 +68,11 @@ export const Login = () => {
 };
 export default Login;
 
-
-const Helper= styled.h3`
-text-align:center;
-color: blacl;`
+const Helper = styled.h3`
+  text-align: center;
+  color: blacl;
+`;
 
 const Link = styled.a`
-color:blue;`
+  color: blue;
+`;

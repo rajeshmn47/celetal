@@ -71,12 +71,15 @@ export default function Edit({ open, setOpen, setUsers, page, setNotifyopen }) {
     setOpen(false);
   };
   const handleChange = async () => {
-    const dear = await axios.post("https://interviewassignmentrajesh.herokuapp.com/user/createuser", {
-      name: name,
-      email: email,
-      phonenumber: phonenumber,
-      company: company,
-    });
+    const dear = await axios.post(
+      "https://interviewassignmentrajesh.herokuapp.com/user/createuser",
+      {
+        name: name,
+        email: email,
+        phonenumber: phonenumber,
+        company: company,
+      }
+    );
     const data = await axios.get(
       `https://interviewassignmentrajesh.herokuapp.com/user/getallusers/?page=${page}`
     );
@@ -86,13 +89,12 @@ export default function Edit({ open, setOpen, setUsers, page, setNotifyopen }) {
   };
 
   return (
-  
-      <Dialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={open}
-      >
-          <div >
+    <Dialog
+      onClose={handleClose}
+      aria-labelledby="customized-dialog-title"
+      open={open}
+    >
+      <div>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
           Add User
         </DialogTitle>
@@ -123,7 +125,7 @@ export default function Edit({ open, setOpen, setUsers, page, setNotifyopen }) {
           </Typography>
           <Typography gutterBottom>
             <TextField
-            style={{ width: "40vw" }}
+              style={{ width: "40vw" }}
               placeholder="company"
               value={company}
               onChange={(e) => setCompany(e.target.value)}
@@ -131,12 +133,16 @@ export default function Edit({ open, setOpen, setUsers, page, setNotifyopen }) {
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={() => handleChange()} color="primary" style={{ width: "40vw" }}>
+          <Button
+            autoFocus
+            onClick={() => handleChange()}
+            color="primary"
+            style={{ width: "40vw" }}
+          >
             Save changes
           </Button>
         </DialogActions>
-        </div>
-      </Dialog>
-    
+      </div>
+    </Dialog>
   );
 }

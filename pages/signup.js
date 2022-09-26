@@ -13,7 +13,6 @@ export const Signup = () => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-  
     if (isAuthenticated) {
       console.log("login suiccessfull");
     }
@@ -55,18 +54,21 @@ export const Signup = () => {
             </div>
             <input type="submit" className="submitbutton" value="Sign up" />
           </form>
-          <Helper>already have account? <Link href='/signin'>login</Link> here</Helper>
+          <Helper>
+            already have account? <Link href="/signin">login</Link> here
+          </Helper>
         </div>
-      </div>        
+      </div>
     </>
   );
 };
 export default Signup;
 
-
-const Helper= styled.h3`
-text-align:center;
-color: black;`
+const Helper = styled.h3`
+  text-align: center;
+  color: black;
+`;
 
 const Link = styled.a`
-color:blue;`
+  color: blue;
+`;

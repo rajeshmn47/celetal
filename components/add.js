@@ -86,12 +86,13 @@ export default function Edit({ open, setOpen, setUsers, page, setNotifyopen }) {
   };
 
   return (
-    <div style={{ width: "40vw" }}>
+  
       <Dialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
       >
+          <div >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
           Add User
         </DialogTitle>
@@ -101,6 +102,7 @@ export default function Edit({ open, setOpen, setUsers, page, setNotifyopen }) {
               placeholder="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              style={{ width: "40vw" }}
             />
           </Typography>
           <Typography gutterBottom>
@@ -108,6 +110,7 @@ export default function Edit({ open, setOpen, setUsers, page, setNotifyopen }) {
               placeholder="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              style={{ width: "40vw" }}
             />
           </Typography>
           <Typography gutterBottom>
@@ -115,10 +118,12 @@ export default function Edit({ open, setOpen, setUsers, page, setNotifyopen }) {
               placeholder="phone number"
               value={phonenumber}
               onChange={(e) => setPhonenumber(e.target.value)}
+              style={{ width: "40vw" }}
             />
           </Typography>
           <Typography gutterBottom>
             <TextField
+            style={{ width: "40vw" }}
               placeholder="company"
               value={company}
               onChange={(e) => setCompany(e.target.value)}
@@ -126,11 +131,12 @@ export default function Edit({ open, setOpen, setUsers, page, setNotifyopen }) {
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={() => handleChange()} color="primary">
+          <Button autoFocus onClick={() => handleChange()} color="primary" style={{ width: "40vw" }}>
             Save changes
           </Button>
         </DialogActions>
+        </div>
       </Dialog>
-    </div>
+    
   );
 }

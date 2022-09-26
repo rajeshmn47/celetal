@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import styled from "@emotion/styled";
 import { login } from "../actions/userAction";
 
 export const Login = () => {
@@ -57,9 +58,18 @@ export const Login = () => {
             </div>
             <input type="submit" className="submitbutton" value="Log in" />
           </form>
+          <Helper>dont have account <Link href='/signup'>register</Link> here</Helper>
         </div>
       </div>
     </>
   );
 };
 export default Login;
+
+
+const Helper= styled.h3`
+text-align:center;
+color: blacl;`
+
+const Link = styled.a`
+color:blue;`

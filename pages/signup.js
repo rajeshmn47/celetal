@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import styled from "@emotion/styled";
 import { register } from "../actions/userAction";
-import { useNavigate } from "react-router-dom";
 
 export const Signup = () => {
   const dispatch = useDispatch();
@@ -57,9 +57,18 @@ export const Signup = () => {
             </div>
             <input type="submit" className="submitbutton" value="Sign up" />
           </form>
+          <Helper>already have account? <Link href='/signin'>login</Link> here</Helper>
         </div>
       </div>
     </>
   );
 };
 export default Signup;
+
+
+const Helper= styled.h3`
+text-align:center;
+color: blacl;`
+
+const Link = styled.a`
+color:blue;`

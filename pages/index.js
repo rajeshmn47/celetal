@@ -19,19 +19,5 @@ export default function Index() {
     (state) => state.user
   );
   console.log(user, isAuthenticated, "pirat");
-  useEffect(() => {
-    dispatch(loadUser());
-    console.log(user);
-  }, [dispatch]);
-  useEffect(() => {
-    console.log(user, "raveena");
-    if (user) {
-      console.log("crazystaag");
-      router.push("/");
-    } else {
-      console.log("stallonebaratheon");
-      router.push("/signin");
-    }
-  }, [user]);
   return <Home />;
 }

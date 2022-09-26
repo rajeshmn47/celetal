@@ -5,6 +5,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_REQUEST,
   LOGIN_FAIL,
+  LOGOUT_SUCCESS,
   REGISTER_USER_FAIL,
   LOAD_USER_SUCCESS,
   LOAD_USER_REQUEST,
@@ -73,9 +74,21 @@ export const loadUser = () => async (dispatch) => {
     );
     console.log(data.message[0]);
     if (data.message[0]) {
-      dispatch({ type: LOAD_USER_SUCCESS, payload: data.message[0] });
+      dispatch(setShowBlogSearch(data.message[0]))
     }
   } catch (error) {
     console.log(error);
   }
 };
+
+export const logout = () => async (dispatch) => {
+  localStorage.removeItem("server_token");
+  dispatch({ type: LOGOUT_SUCCESS })
+};
+
+export const setShowBlogSearch = (payload) => ({
+  type:  LOAD_USER_SUCCESS,
+  payload,
+});
+
+

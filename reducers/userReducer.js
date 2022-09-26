@@ -41,10 +41,15 @@ import {
   CLEAR_ERRORS,
 } from "../constants/userConstants";
 
-export const userReducer = (state = { user: {} }, action) => {+
-  console.log(action.type,action.payload,'killermiller')
+export const userReducer = (state = { user: {} },action = {}) => {
+  console.log(action.type, action.payload, "killermiller");
   switch (action.type) {
     case REGISTER_USER_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        isAuthenticated: false,
+      };
     case LOGIN_REQUEST:
       return {
         ...state,
@@ -52,8 +57,21 @@ export const userReducer = (state = { user: {} }, action) => {+
         isAuthenticated: false,
       };
     case LOGIN_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isAuthenticated: true,
+        user: action.payload,
+      };
     case REGISTER_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isAuthenticated: true,
+        user: action.payload,
+      };
     case LOAD_USER_SUCCESS:
+      console.log(action.payload, "katrina");
       return {
         ...state,
         loading: false,
@@ -68,6 +86,14 @@ export const userReducer = (state = { user: {} }, action) => {+
         isAuthenticated: false,
       };
     case LOGIN_FAIL:
+      console.log("login failure", action.payload, "rajesh");
+      return {
+        ...state,
+        loading: false,
+        isAuthenticated: false,
+        user: null,
+        error: action.payload,
+      };
     case REGISTER_USER_FAIL:
       return {
         ...state,

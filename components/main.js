@@ -9,8 +9,11 @@ import Table from "./table";
 import Add from "./add";
 import Edit from "./edit";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { loadUser,logout } from "../actions/userAction";
 
 function Main() {
+  const dispatch = useDispatch()
   const [page, setPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [open, setOpen] = useState(false);
@@ -19,7 +22,9 @@ function Main() {
   const [edititem, setEdititem] = useState();
   const [counts, setCounts] = useState();
   const [notifyopen, setNotifyopen] = useState();
-
+  const { user, isAuthenticated, loading, error } = useSelector(
+    (state) => state.user
+  );
   useEffect(() => {
     async function getUsers() {
       const data = await axios.get(
@@ -43,6 +48,10 @@ function Main() {
     console.log(data);
     setUsers(data.data.users);
   };
+
+  const handleLogout= async ()=>{
+    dispatch(logout())
+  }
   return (
     <Container>
       <AppBar
@@ -50,15 +59,20 @@ function Main() {
         elevation={0}
         style={{ backgroundColor: "#F8F8F8", padding: "2vh 2vw" }}
       >
-        <Grid container spacing={2}>
-          <Grid item xs={8} lg={10}>
+        <Grid container spacing={2} style={{display:'flex',alignItems:'center'}}>
+          <Grid item xs={8} lg={9}>
             <Input type="text" placeholder="search" />
           </Grid>
           <Grid item xs={8} lg={1}>
             <NotificationsIcon style={{ color: "#757575" }} />
           </Grid>
           <Grid item xs={8} lg={1}>
-            <Name>A</Name>
+            <Name>{user&&user.username?.charAt(0)}</Name>
+
+          </Grid>
+          <Grid item xs={8} lg={1}>
+            {user.username?<Logout onClick={()=>handleLogout()}>logout</Logout>
+            :<Login href='/signin'>Sign in</Login>}
           </Grid>
         </Grid>
       </AppBar>
@@ -175,4 +189,16 @@ const AddButton = styled.button`
   display: flex;
   justify-content: space-evenly;
 `;
+
+const Logout= styled.button`
+background-color: #ec633c;
+text-transform: capitalize;
+padding:1vh 1vw;
+border-radius: 5px;
+color: #ffffff;
+`
+const Login= styled.a`
+text-transform: capitalize;
+border-radius: 5px;
+`
 export default Main;

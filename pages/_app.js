@@ -26,10 +26,7 @@ function MyApp({ Component, pageProps }) {
     if (user.username) {
       console.log("crazystaag");
       router.push("/");
-    } else {
-      console.log("stallonebaratheon");
-      router.push("/signin");
-    }
+    } 
   }, [user]);
   return <Component {...pageProps} />;
 }

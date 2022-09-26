@@ -28,7 +28,7 @@ function Main() {
   useEffect(() => {
     async function getUsers() {
       const data = await axios.get(
-        `http://localhost:9000/user/getallusers/?page=${page}`
+        `https://interviewassignmentrajesh.herokuapp.com/user/getallusers/?page=${page}`
       );
       console.log(data);
       setUsers(data.data.users);
@@ -41,9 +41,9 @@ function Main() {
   };
   const handledelete = async (id) => {
     console.log(id, "sachin");
-    const d = await axios.get(`http://localhost:9000/user/deleteuser/${id}`);
+    const d = await axios.get(`https://interviewassignmentrajesh.herokuapp.com/user/deleteuser/${id}`);
     const data = await axios.get(
-      `http://localhost:9000/user/getallusers/?page=${page}`
+      `https://interviewassignmentrajesh.herokuapp.com/user/getallusers/?page=${page}`
     );
     console.log(data);
     setUsers(data.data.users);

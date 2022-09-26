@@ -13,9 +13,7 @@ export const Signup = () => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    if (error) {
-      alert.error(error);
-    }
+  
     if (isAuthenticated) {
       console.log("login suiccessfull");
     }
@@ -59,7 +57,7 @@ export const Signup = () => {
           </form>
           <Helper>already have account? <Link href='/signin'>login</Link> here</Helper>
         </div>
-      </div>
+      </div>        
     </>
   );
 };
@@ -68,7 +66,7 @@ export default Signup;
 
 const Helper= styled.h3`
 text-align:center;
-color: blacl;`
+color: black;`
 
 const Link = styled.a`
 color:blue;`

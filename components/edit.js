@@ -86,15 +86,15 @@ export default function Edit({
   };
   const handleChange = async (edititem) => {
     const dear = await axios.get(
-      `http://localhost:9000/user/edituser/${edititem._id}`
+      `https://interviewassignmentrajesh.herokuapp.com/user/edituser/${edititem._id}`
     );
     console.log(edititem._id, email);
-    const d = await axios.post("http://localhost:9000/user/edituser", {
+    const d = await axios.post("https://interviewassignmentrajesh.herokuapp.com/user/edituser", {
       id: edititem._id,
       email: email,
     });
     const data = await axios.get(
-      `http://localhost:9000/user/getallusers/?page=${page}`
+      `https://interviewassignmentrajesh.herokuapp.com/user/getallusers/?page=${page}`
     );
     setUsers(data.data.users);
     setOpen(false);

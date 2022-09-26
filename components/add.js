@@ -71,14 +71,14 @@ export default function Edit({ open, setOpen, setUsers, page, setNotifyopen }) {
     setOpen(false);
   };
   const handleChange = async () => {
-    const dear = await axios.post("http://localhost:9000/user/createuser", {
+    const dear = await axios.post("https://interviewassignmentrajesh.herokuapp.com/user/createuser", {
       name: name,
       email: email,
       phonenumber: phonenumber,
       company: company,
     });
     const data = await axios.get(
-      `http://localhost:9000/user/getallusers/?page=${page}`
+      `https://interviewassignmentrajesh.herokuapp.com/user/getallusers/?page=${page}`
     );
     setUsers(data.data.users);
     setOpen(false);

@@ -28,7 +28,7 @@ function TableContainer({
       <tbody>
         {users &&
           users.map((u) => (
-            <TableRow>
+            <TableRow key={u._id}>
               <td>{u.name}</td>
               <td>{u.email}</td>
               <td>{u.phonenumber}</td>

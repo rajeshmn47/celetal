@@ -133,7 +133,6 @@ function Main() {
         handledelete={handledelete}
         setEdititem={setEdititem}
         setOpen={setOpen}
-
       />
       <Pagination>
         <LeftPage onClick={() => handlePages(-1)}>
@@ -165,9 +164,9 @@ const Container = styled.div`
   padding: 2vh 2vw;
   height: 100vh;
   @media (max-width: 600px) {
-    position:absolute;
+    position: absolute;
     width: 200vw;
-    overflow:hidden;
+    overflow: hidden;
   }
 `;
 

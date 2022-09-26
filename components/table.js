@@ -4,12 +4,7 @@ import EditOutlineIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Edit from "./edit";
 
-function TableContainer({
-  users,
-  handledelete,
-  setEdititem,
-  setOpen = { setOpen },
-}) {
+function TableContainer({ users, handledelete, setEdititem, setOpen }) {
   const handleedit = (a) => {
     setEdititem(a);
     setOpen(true);
@@ -65,8 +60,8 @@ const Table = styled.table`
 `;
 
 const TableRow = styled.tr`
-  border-bottom: 1px solid #e0e0e0;
-  padding: 2vh 2vw;
+  border-bottom: 1px solfid #e0e0e0;
+  padding: 2ggdsffh 2vw;
 `;
 
 export default TableContainer;

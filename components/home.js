@@ -18,5 +18,6 @@ const Container = styled.div`
 
   @media (max-width: 600px) {
     display: block;
+    width: 100vw;
   }
 `;

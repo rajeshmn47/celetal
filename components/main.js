@@ -15,6 +15,7 @@ import { loadUser, logout } from "../actions/userAction";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import MenuIcon from "@mui/icons-material/Menu";
+import { handleBreakpoints } from "@mui/system";
 
 function Main() {
   const dispatch = useDispatch();
@@ -109,12 +110,7 @@ function Main() {
           </AddButton>
         </Actions>
       </TableHeader>
-      <Table
-        users={users}
-        handledelete={handledelete}
-        setEdititem={setEdititem}
-        setOpen={setEditopen}
-      />
+
       <Add
         open={open}
         setOpen={setOpen}
@@ -132,7 +128,13 @@ function Main() {
         notifyopen={notifyopen}
         setNotifyopen={setNotifyopen}
       />
+      <Table
+        users={users}
+        handledelete={handledelete}
+        setEdititem={setEdititem}
+        setOpen={setOpen}
 
+      />
       <Pagination>
         <LeftPage onClick={() => handlePages(-1)}>
           <ChevronLeftIcon style={{ fontSize: "3rem" }} />
@@ -159,11 +161,13 @@ const Container = styled.div`
     }
   }
   background-color: #f8f8f8;
-  width: 100%;
+  width: 100vw;
   padding: 2vh 2vw;
   height: 100vh;
   @media (max-width: 600px) {
-    
+    position:absolute;
+    width: 200vw;
+    overflow:hidden;
   }
 `;
 

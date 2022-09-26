@@ -14,7 +14,7 @@ export default Home;
 
 const Container = styled.div`
   display: flex;
-  width: 200vw;
+  width: 100vw;
 
   @media (max-width: 600px) {
     display: block;

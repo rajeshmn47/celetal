@@ -252,6 +252,7 @@ const Pagination = styled.div`
   width: 15vw;
   flex: flex-end;
   float: right;
+  margin-right: 2vw;
 `;
 
 const LeftPage = styled.button`

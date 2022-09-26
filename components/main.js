@@ -71,7 +71,7 @@ function Main() {
 
           </Grid>
           <Grid item xs={8} lg={1}>
-            {user.username?<Logout onClick={()=>handleLogout()}>logout</Logout>
+            {user&&user.username?<Logout onClick={()=>handleLogout()}>logout</Logout>
             :<Login href='/signin'>Sign in</Login>}
           </Grid>
         </Grid>

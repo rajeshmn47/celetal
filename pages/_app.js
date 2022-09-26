@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
   }, [dispatch]);
   useEffect(() => {
     console.log(user, "raveena");
-    if (user.username) {
+    if (user&& user.username){
       console.log("crazystaag");
       router.push("/");
     } 

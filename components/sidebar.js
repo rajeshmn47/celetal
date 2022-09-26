@@ -6,9 +6,9 @@ import CreditCardIcon from "@mui/icons-material/CreditCard";
 import { Menu } from "@material-ui/icons";
 import Drawer from "@mui/material/Drawer";
 import CloseIcon from "@mui/icons-material/Close";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 import { useDispatch, useSelector } from "react-redux";
-import LoginIcon from '@mui/icons-material/Login';
+import LoginIcon from "@mui/icons-material/Login";
 import { useRouter } from "next/router";
 import { logout } from "../actions/userAction";
 
@@ -17,7 +17,7 @@ function Sidebar() {
     (state) => state.user
   );
   const [open, setOpen] = useState(false);
-  const router= useRouter()
+  const router = useRouter();
   const toggleDrawer = () => {
     setOpen(false);
   };
@@ -51,7 +51,7 @@ function Sidebar() {
       <ContainerT>
         <NavT>
           <Menu onClick={() => setOpen(!open)} />
-          <CeletalImg src="./fend.png" alt=""  />
+          <CeletalImg src="./fend.png" alt="" />
         </NavT>
         <Drawer
           anchor="left"
@@ -66,7 +66,7 @@ function Sidebar() {
           <DrawerContainer>
             <DraNav>
               <CloseIcon onClick={() => setOpen(false)} />
-              <CeletalImg src="./fend.png" alt='' width='200'/>
+              <CeletalImg src="./fend.png" alt="" width="200" />
             </DraNav>
             <Navbar>
               <NavItemSelected>
@@ -95,17 +95,20 @@ function Sidebar() {
                 />
                 Alerts
               </NavItem>
-            
-                {user&&user.username?
-                  <NavItem   onClick={()=>dispatch(logout())}>
-                <LogoutIcon
-                  style={{ color: "#757575", marginRight: "2vw" }} />
-                Logout
-              </NavItem>:
-              <NavItem  onClick={()=>(router.push('/signin'))}>
-                <LoginIcon  style={{ color: "#757575", marginRight: "2vw" }} />
-                Login
-              </NavItem>}
+
+              {user && user.username ? (
+                <NavItem onClick={() => dispatch(logout())}>
+                  <LogoutIcon
+                    style={{ color: "#757575", marginRight: "2vw" }}
+                  />
+                  Logout
+                </NavItem>
+              ) : (
+                <NavItem onClick={() => router.push("/signin")}>
+                  <LoginIcon style={{ color: "#757575", marginRight: "2vw" }} />
+                  Login
+                </NavItem>
+              )}
             </Navbar>
           </DrawerContainer>
         </Drawer>

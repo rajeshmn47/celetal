@@ -14,9 +14,9 @@ export default Home;
 
 const Container = styled.div`
   display: flex;
-  width: 100%;
+  width: 200vw;
 
   @media (max-width: 600px) {
-    flex-direction: column;
+    display: block;
   }
 `;

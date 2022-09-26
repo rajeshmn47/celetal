@@ -5,6 +5,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import Grid from "@mui/material/Grid";
 import SortIcon from "@mui/icons-material/Sort";
 import AddIcon from "@mui/icons-material/Add";
+import { IconButton, Typography, useMediaQuery, Hidden } from "@mui/material";
 import Table from "./table";
 import Add from "./add";
 import Edit from "./edit";
@@ -19,6 +20,7 @@ function Main() {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+
   const [open, setOpen] = useState(false);
   const [editopen, setEditopen] = useState(false);
   const [users, setUsers] = useState();
@@ -149,7 +151,6 @@ const Container = styled.div`
     background-color: #ffffff;
     @media (max-width: 600px) {
       display: none !important;
-      position: static;
     }
   }
   .appbar {
@@ -158,10 +159,11 @@ const Container = styled.div`
     }
   }
   background-color: #f8f8f8;
-  width: 80%;
+  width: 100%;
   padding: 2vh 2vw;
   height: 100vh;
   @media (max-width: 600px) {
+    
   }
 `;
 
